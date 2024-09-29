@@ -1,0 +1,11 @@
+package org.example;
+
+import java.util.Scanner;
+public class Proprietario {
+    private String nome;
+    private String cognome;
+    private String numero_telefono;
+    private String indirizzo;
+}
+
+

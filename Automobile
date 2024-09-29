@@ -1,0 +1,104 @@
+package org.example;
+
+import java.util.Scanner;
+
+public class Automobile {
+    private String marca_macchina;
+    private String modello_macchina;
+    private String targhe;
+    private String colore;
+    private double cilindrata;
+    private double tempo_0_100;
+    private double velocita_massima;
+    private int nPosti;
+    private int Capienza_bagagliaio;
+    private int numero_cavalli;
+    private int potenza;
+    private int coppia;
+
+
+    public String getNomi_macchine() {
+        return this.marca_macchina = set_nomi_macchine();
+    }
+    public String set_nomi_macchine() {
+        Scanner sc = new Scanner(System.in);
+        String[] elenco_marchi = new String[] {"Alfa romeo","Audi","BMW","Citroen","Dacia","Ferrari","Fiat","Ford","Honda","Hyundai","Jeep","Kia","Maserati","Mazda","Mercedes","Mini","Nissan","Opel","Peugeot","Porsche","Renault","Skoda"};
+        System.out.print("Inserisci la marca della macchina che desideri:");
+        this.marca_macchina = sc.next();
+        for (int i=0;i<elenco_marchi.length-1;i++) {
+            if(this.marca_macchina.equalsIgnoreCase(elenco_marchi[i])) {
+                System.out.println("Marchio disponibile");
+            }
+
+        }
+        return this.marca_macchina;
+    }
+
+
+    public String getModello_macchina() {
+        return this.modello_macchina = setModello_macchina();
+    }
+    public String setModello_macchina() {
+        getNomi_macchine();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Inserisci il modello della macchina che desideri:");
+        this.modello_macchina = sc.next();
+        return this.modello_macchina;
+    }
+
+
+    public String get_targhe() {
+        return this.targhe = set_targhe();
+    }
+    public String set_targhe() {
+        Scanner sc = new Scanner(System.in);
+            System.out.println("Inserisci la targa della macchina: (Inserisci le lettere maiuscole)");
+            this.targhe = sc.next();
+
+            boolean valida = false;
+            for (int i=0;i<this.targhe.length()-1;i++) {
+                if (i<2 && Character.isUpperCase(this.targhe.charAt(0)) && Character.isUpperCase(this.targhe.charAt(1)) ) {
+                    valida = true;
+                    break;
+                }else if (i >= 2 && i < 5 && !Character.isDigit(this.targhe.charAt(2)) && Character.isUpperCase(this.targhe.charAt(3)) && Character.isUpperCase(this.targhe.charAt(4))) {
+                    valida = true;
+                    break;
+                } else if (i >= 5 && !Character.isUpperCase(this.targhe.charAt(5)) && Character.isUpperCase(this.targhe.charAt(6))) {
+                    valida = true;
+                    break;
+                }
+            }
+        if (valida) {
+            System.out.println("La targa è valida.");
+        } else {
+            System.out.println("La targa non è valida.");
+        }
+        return this.targhe;
+    }
+
+    public String getColore() {
+        return this.colore = setColore();
+    }
+    public String setColore() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Scegli il colore per la macchina: \nNero\nBianco\nGrigio\nAzzurro\nRosso\nMarrone:\n");
+        this.colore = sc.next();
+        return this.colore;
+    }
+
+    public double getCilindrata() {
+        return this.cilindrata = setCilindrata();
+    }
+    public double setCilindrata() {
+        Scanner sc = new Scanner(System.in);
+        this.cilindrata = sc.nextDouble();
+        if (this.cilindrata <= 1200.0) {
+            System.out.println("Classe bassa di cilindrata");
+        } else if (this.cilindrata>1201.0 && this.cilindrata<=1600.0) {
+            System.out.println("Classe medio/alta di cilindrata");
+        }else if (this.cilindrata>1601.0 && this.cilindrata<=2000.0) {
+            System.out.println("Classe alta di cilindrata");
+        }
+        return this.cilindrata;
+    }
+}
